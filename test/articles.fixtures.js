@@ -40,15 +40,23 @@ function makeArticlesArray() {
 }
 
 function makeMaliciousArticle() {
-  return [
-    {
+  return {
+    maliciousArticle: {
       id: 911,
       title: 'Naughty naughty very naughty <script>alert("xss");</script>',
       style: 'How-to',
       content: `Bad image <img src="https://url.to.file.which/does-not.exist" onerror="alert(document.cookie);">. But not <strong>all</strong> bad.`,
-      author: 911
+      author: 1
+    },
+    expectedArticle: {
+      id: 911,
+      title:
+        'Naughty naughty very naughty &lt;script&gt;alert("xss");&lt;/script&gt;',
+      style: 'How-to',
+      content: `Bad image <img src="https://url.to.file.which/does-not.exist">. But not <strong>all</strong> bad.`,
+      author: 1
     }
-  ];
+  };
 }
 
 module.exports = {
